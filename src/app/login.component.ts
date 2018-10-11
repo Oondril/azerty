@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', 'global.css']
+  selector: 'login',
+  templateUrl: './login.html',
+  styleUrls: ['./login.css', 'global.css']
 })
 
-export class AppComponent {
+export class LoginComponent {
 
   title = 'app';
   hello = false;

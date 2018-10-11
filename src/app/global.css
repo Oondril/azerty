@@ -1,0 +1,31 @@
+.center{
+  text-align: center;
+}
+
+.logo{
+  width : 300px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.bleu-fonce{
+  color: #1B73B9;
+}
+
+.bleu-clair{
+  color: #66C3D9;
+}
+
+.fushia{
+  color: #932050;
+}
+
+.orange{
+  color: #E34825;
+}
+
+.gris{
+  color: #575757;
+}

@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', 'global.css']
+  selector: 'welcome-page',
+  templateUrl: './welcome.html',
+  styleUrls: ['./welcome.css', './global.css']
 })
 
-export class AppComponent {
+export class WelcomePageComponent {
 
   title = 'app';
   hello = false;

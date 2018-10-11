@@ -1,11 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <img width="300" src="../assets/logo/azerty_logo.png">
+<router-outlet></router-outlet>
+<div class="row center">
+  <img class="logo" src="../assets/logo/azerty_logo.png">
 </div>
-<h2>Identification : </h2>
-<h1>Test git work</h1>
-<h1>Jambon</h1>
-<h1>Jambon</h1>
-<h1>Jambon</h1>
-<h1>Jojo la frite</h1>
 
+<div *ngIf="page === 0">
+  <login></login>
+</div>
+
+<div *ngIf="page === 1">
+  <welcome-page></welcome-page>
+</div>
