@@ -1,0 +1,31 @@
+<h3 class="titre-exercice">Injection SQL</h3>
+
+<div *ngIf="pageExercice === 0">
+  <div class="explications">
+    <explications-attaque></explications-attaque>
+  </div>
+
+  <div class="center">
+    <button class="bouton-suite" (click)="suite()">Continuer</button>
+  </div>
+</div>
+
+<div *ngIf="pageExercice === 1">
+  <div class="explications">
+    <explications-exercice></explications-exercice>
+  </div>
+
+  <div class="center">
+    <button class="bouton-suite" (click)="suite()">Attaquer</button>
+  </div>
+</div>
+
+<div *ngIf="pageExercice === 2">
+  <div class="explications">
+    <explications-fonctionnement></explications-fonctionnement>
+  </div>
+
+  <div class="center">
+    <button class="bouton-suite" (click)="suite()">Terminer</button>
+  </div>
+</div>

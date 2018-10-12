@@ -20,14 +20,16 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "sass/styles.scss",
+        "sass/styles.scss"
       ],
       "stylePreprocessorOptions": {
         "includePaths": [
           "../node_modules/bootstrap/scss"
         ]
       },
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -1,31 +1,46 @@
+@import '~sass/variables';
+
 .center{
   text-align: center;
 }
 
 .logo{
   width : 300px;
+  margin: 40px;
+}
+
+h2{
+  color: $couleur1;
+}
+
+button{
+  margin: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  width: 300px;
+  color: $couleur1;
+  border: solid 1px $couleur2;
+  background-color: white;
 }
 
 button:hover{
   cursor: pointer;
+  border: solid 1px $couleur1;
 }
 
-.bleu-fonce{
-  color: #1B73B9;
+input{
+  margin: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  width: 300px;
+  color: $couleur1;
+  border: solid 1px $couleur2;
 }
 
-.bleu-clair{
-  color: #66C3D9;
+:-moz-placeholder{
+  color: $couleur2;
 }
 
-.fushia{
-  color: #932050;
-}
-
-.orange{
-  color: #E34825;
-}
-
-.gris{
-  color: #575757;
+::-webkit-input-placeholder{
+  color: $couleur2;
 }

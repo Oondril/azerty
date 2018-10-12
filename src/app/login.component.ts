@@ -1,26 +1,17 @@
 import {Component} from '@angular/core';
+import {AppComponent} from './app.component';
 
 @Component({
   selector: 'login',
   templateUrl: './login.html',
-  styleUrls: ['./login.css', 'global.css']
+  styleUrls: ['./login.scss', 'global.scss']
 })
 
 export class LoginComponent {
 
-  title = 'app';
-  hello = false;
-  page = 0;
+  constructor(private appComponent:AppComponent) { }
 
-  sayHi(){
-    this.hello = true;
-  }
-
-  retour(){
-    this.page = 0;
-  }
-
-  goToWelcomePage(){
-    this.page = 1;
+  connexion(){
+    this.appComponent.page = 1;
   }
 }

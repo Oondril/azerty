@@ -1,7 +1,10 @@
-@import
+/*@import
 'functions',
 'variables',
 'mixins',
 'print',
 'reboot',
 'type';
+*/
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome';

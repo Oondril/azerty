@@ -1,0 +1,32 @@
+@import '~sass/variables';
+
+.bouton-plus{
+  margin: 5px 0 0 5px;
+  color: $couleur3;
+}
+
+.bouton-plus:hover{
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.avant-rotation{
+  -webkit-transition:-webkit-transform .4s;
+  -moz-transition:-moz-transform .4s;
+  -o-transition:-o-transform .4s;
+  transition:transform .4s;
+}
+
+.apres-rotation{
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.bouton-plus-ouvert{
+  margin: 5px 0 0 5px;
+  color: $couleur3;
+  font-weight: 500;
+}

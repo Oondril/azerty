@@ -1,0 +1,29 @@
+@import '~sass/variables';
+
+.titre-exercice{
+  margin: 0 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: $couleur3;
+  border: solid 1px $couleur4;
+  background-color: white;
+  text-align: center;
+}
+
+.explications{
+  margin: 10px 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px $couleur4;
+  background-color: white;
+}
+
+.bouton-suite{
+  margin: 0;
+  color: $couleur3;
+  border: solid 1px $couleur4;
+}
+
+.bouton-suite:hover{
+  border: solid 1px $couleur3;
+}

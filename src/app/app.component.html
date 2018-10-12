@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
-<div class="row center">
+<div class="center">
   <img class="logo" src="../assets/logo/azerty_logo.png">
 </div>
 
@@ -8,5 +8,9 @@
 </div>
 
 <div *ngIf="page === 1">
-  <welcome-page></welcome-page>
+  <page-connexion></page-connexion>
+</div>
+
+<div *ngIf="page === 3">
+  <exercice></exercice>
 </div>
