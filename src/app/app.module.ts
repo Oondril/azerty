@@ -9,6 +9,9 @@ import {ExerciceComponent} from './exercices/exercice.component';
 import {ExplicationsAttaqueComponent} from './exercices/données/explications-attaque.component';
 import {ExplicationsExerciceComponent} from './exercices/données/explications-exercice.component';
 import {ExplicationsFonctionnementComponent} from './exercices/données/explications-fonctionnement.component';
+import {InteractionConsoleComponent} from './exercices/données/interaction-console.component';
+import {ApiService} from './services/api.service';
+import {ApiSshService} from './services/api-ssh.service';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: PageConnexionComponent },
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
     ExplicationsAttaqueComponent,
     ExplicationsExerciceComponent,
     ExplicationsFonctionnementComponent,
-    ExerciceComponent
+    ExerciceComponent,
+    InteractionConsoleComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,10 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    ApiSshService
+  ],
   bootstrap: [AppComponent]
 })
 

@@ -1,17 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {ApiSshService} from '../../services/api-ssh.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'explications-exercice',
-  templateUrl: './explications-exercice.html'
+  templateUrl: './explications-exercice.html',
+  styleUrls: ['../../global.scss']
 })
 
-export class ExplicationsExerciceComponent implements OnInit {
-
-  constructor(private apiSshService: ApiSshService){}
-
-  ngOnInit(){
-    this.apiSshService.getAction();
-  }
+export class ExplicationsExerciceComponent {
 
 }

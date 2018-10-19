@@ -12,7 +12,7 @@ export class ExerciceComponent /*implements OnInit*/{
   pageExercice = 0;
   plus = false;
 
-  constructor(private apiService: ApiService){}
+  //constructor(private apiService: ApiService){}
 
   /*ngOnInit(){
     this.apiService.getExercice();
