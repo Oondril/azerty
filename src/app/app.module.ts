@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {PageConnexionComponent} from './page-connexion.component';
 import {LoginComponent} from './login.component';
-import {ModeleExerciceComponent} from './exercices/modele-exercice.component';
+import {ExerciceComponent} from './exercices/exercice.component';
 import {ExplicationsAttaqueComponent} from './exercices/données/explications-attaque.component';
 import {ExplicationsExerciceComponent} from './exercices/données/explications-exercice.component';
 import {ExplicationsFonctionnementComponent} from './exercices/données/explications-fonctionnement.component';
@@ -20,10 +20,10 @@ const appRoutes: Routes = [
     AppComponent,
     PageConnexionComponent,
     LoginComponent,
-    ModeleExerciceComponent,
     ExplicationsAttaqueComponent,
     ExplicationsExerciceComponent,
-    ExplicationsFonctionnementComponent
+    ExplicationsFonctionnementComponent,
+    ExerciceComponent
   ],
   imports: [
     BrowserModule,
