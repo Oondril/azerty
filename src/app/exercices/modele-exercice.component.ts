@@ -18,5 +18,5 @@ export class ModeleExerciceComponent {
       this.plus = false;
     }
   }
-
 }
+
