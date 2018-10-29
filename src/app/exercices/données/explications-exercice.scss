@@ -1,0 +1,25 @@
+//Console
+.shell{
+  background-color: black;
+  color: white;
+  font-family: "Courier New";
+  border: none;
+  border-radius: 0;
+}
+
+.shell-reponse{
+  min-height: 32px;
+}
+
+.shell-commande{
+  width: 100%;
+  margin: 0;
+}
+
+:-moz-placeholder{
+  color: white;
+}
+
+::-webkit-input-placeholder{
+  color: white;
+}
