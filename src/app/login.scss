@@ -1,0 +1,14 @@
+@import '~sass/variables';
+
+:-moz-placeholder{
+  color: $couleur2;
+}
+
+::-webkit-input-placeholder{
+  color: $couleur2;
+}
+
+.login{
+  color: $couleur1;
+  border: solid 1px $couleur2;
+}

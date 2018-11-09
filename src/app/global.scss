@@ -4,11 +4,6 @@
   text-align: center;
 }
 
-.logo{
-  width : 300px;
-  margin: 40px;
-}
-
 h2{
   color: $couleur1;
 }
@@ -33,14 +28,10 @@ input{
   padding: 4px 6px;
   border-radius: 5px;
   width: 300px;
-  color: $couleur1;
-  border: solid 1px $couleur2;
 }
 
-:-moz-placeholder{
-  color: $couleur2;
-}
-
-::-webkit-input-placeholder{
-  color: $couleur2;
+.colonne{
+  width: 49.6%;
+  display: inline-grid;
+  vertical-align: top;
 }
