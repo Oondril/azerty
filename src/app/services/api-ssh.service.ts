@@ -77,4 +77,16 @@ export class ApiSshService {
     this.socket.emit('command', command);
   }
 
+  // SPECIFICS COMMANDS
+
+  writePasswordFile(tab){
+    for ( let i = 0; i < tab.length; i++){
+      if (i === 0) {
+        this.socket.emit('command', 'echo ' + tab[i] + ' > password.txt');
+      }else{
+        this.socket.emit('command', 'echo ' + tab[i] + ' >> password.txt');
+      }
+    }
+  }
+
 }
