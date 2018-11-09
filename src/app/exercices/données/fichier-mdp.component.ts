@@ -1,12 +1,15 @@
 import {Component} from '@angular/core';
+import {ApiSshService} from '../../services/api-ssh.service';
 
 @Component({
   selector: 'fichier-mdp',
   templateUrl: './fichier-mdp.html',
-  styleUrls: ['../../global.scss']
+  styleUrls: ['../../global.scss', './fichier-mdp.scss']
 })
 
 export class FichierMdpComponent {
+
+  constructor(private apiSshService: ApiSshService){}
 
   public listeMdp = [];
   public nouveauMdp = "";
@@ -25,7 +28,10 @@ export class FichierMdpComponent {
 
   supprimeMdp(i){
     this.listeMdp.splice(i, 1);
-    console.log(this.listeMdp);
+  }
+
+  envoyerListeMdp(){
+    this.apiSshService.writePasswordFile(this.listeMdp);
   }
 
 }

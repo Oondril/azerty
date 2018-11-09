@@ -1,5 +1,9 @@
-<div *ngFor="let mdp of listeMdp; let i = index">
-  {{mdp}}<button (click)="supprimeMdp(i)">X</button>
+<div class="fichier">
+   <div class="mdp" *ngFor="let mdp of listeMdp; let i = index">
+     <span class="bouton-suppression" (click)="supprimeMdp(i)">Ⓧ</span> &nbsp;
+     {{mdp}}
+   </div>
 </div><br/>
 <input class="shell shell-commande" type="text" [value]="nouveauMdp" (input)="nouveauMdp = $event.target.value" placeholder="Commande"/>
-<button class="bouton-suite" (click)="ajouteMdp(nouveauMdp)">Valider</button>
+<button class="bouton-suite" (click)="ajouteMdp(nouveauMdp)">Ajouter</button>
+<button class="bouton-suite" (click)="envoyerListeMdp()">Envoyer</button>

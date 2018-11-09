@@ -7,7 +7,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class ApiSshService {
 
-  protected url : string = '192.168.56.101';
+  protected url : string = '172.23.2.84';
   protected port : string = '8888';
 
   socket: SocketIOClient.Socket = null;
@@ -82,9 +82,9 @@ export class ApiSshService {
   writePasswordFile(tab){
     for ( let i = 0; i < tab.length; i++){
       if (i === 0) {
-        this.socket.emit('command', 'echo ' + tab[i] + ' > password.txt');
+        this.socket.emit('command', 'echo "' + tab[i] + '" > password.txt\r');
       }else{
-        this.socket.emit('command', 'echo ' + tab[i] + ' >> password.txt');
+        this.socket.emit('command', 'echo "' + tab[i] + '" >> password.txt\r');
       }
     }
   }
