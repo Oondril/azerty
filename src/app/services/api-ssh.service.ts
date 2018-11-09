@@ -7,16 +7,16 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class ApiSshService {
 
-  protected url : string = '172.23.4.92';
+  protected url : string = '192.168.56.101';
   protected port : string = '8888';
 
-  socket: SocketIOClient.Socket;
+  socket: SocketIOClient.Socket = null;
 
 
   public shellAnswer;
 
   constructor(){
-    this.socket = io.connect('http://' + this.url + ':' + this.port);
+    this.connectSocket('http://' + this.url + ':' + this.port);
     this.shellAnswer = new Observable(observer => {
       this.socket.on('data', function(data, res){
         observer.next(data);
@@ -24,6 +24,23 @@ export class ApiSshService {
     });
   }
 
+  connectSocket(uri:String){
+    if(this.socket !== null){
+      console.log(' - socket already existing - ');
+      return;
+    }
+    this.socket = io.connect(uri);
+  }
+
+  disconnectSocket(){
+    if(this.socket == null){
+      console.log(' - socket already disconnected - ');
+      return;
+    }
+    this.socket.emit('disconnect');
+    this.socket.disconnect();
+    this.socket = null;
+  }
   /*test(){
     this.socket.emit('shellexec', { command: 'cd ~ && ls -a' });
     this.socket.emit('sshAccess', { ip: '192.168.56.102', user : 'root', password : 'network'});
@@ -43,6 +60,8 @@ export class ApiSshService {
   disconnectSsh(){
     this.socket.emit('disconnectSSH');
   }
+
+
 
  /* getData(){
     this.socket.on('shellexecanswer', function (data) {
