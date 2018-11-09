@@ -11,6 +11,7 @@ import {ExplicationsExerciceComponent} from './exercices/données/explications-e
 import {ExplicationsFonctionnementComponent} from './exercices/données/explications-fonctionnement.component';
 import {ApiService} from './services/api.service';
 import {ApiSshService} from './services/api-ssh.service';
+import {InteractionConsoleComponent} from './exercices/données/interaction-console.component';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: PageConnexionComponent },
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     ExplicationsAttaqueComponent,
     ExplicationsExerciceComponent,
     ExplicationsFonctionnementComponent,
-    ExerciceComponent
+    ExerciceComponent,
+    InteractionConsoleComponent
   ],
   imports: [
     BrowserModule,
