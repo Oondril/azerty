@@ -2,9 +2,24 @@
   background-color: black;
   color: white;
   font-family: "Courier New";
+  border: none;
+  border-radius: 0;
 }
 
 .scrollable-content{
   overflow-y: scroll;
   height:400px;
+}
+
+.shell-commande{
+  width: 100%;
+  margin: 0;
+}
+
+:-moz-placeholder{
+  color: white;
+}
+
+::-webkit-input-placeholder{
+  color: white;
 }
