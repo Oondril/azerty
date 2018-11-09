@@ -12,6 +12,7 @@ import {ExplicationsFonctionnementComponent} from './exercices/données/explicat
 import {ApiService} from './services/api.service';
 import {ApiSshService} from './services/api-ssh.service';
 import {InteractionConsoleComponent} from './exercices/données/interaction-console.component';
+import {FichierMdpComponent} from './exercices/données/fichier-mdp.component';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: PageConnexionComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     ExplicationsExerciceComponent,
     ExplicationsFonctionnementComponent,
     ExerciceComponent,
-    InteractionConsoleComponent
+    InteractionConsoleComponent,
+    FichierMdpComponent
   ],
   imports: [
     BrowserModule,
