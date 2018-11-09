@@ -80,8 +80,8 @@ export class ApiSshService {
   // SPECIFICS COMMANDS
 
   writePasswordFile(tab){
-    for (i = 0; i < tab.length; i++){
-      if (i === 0){
+    for ( let i = 0; i < tab.length; i++){
+      if (i === 0) {
         this.socket.emit('command', 'echo ' + tab[i] + ' > password.txt');
       }else{
         this.socket.emit('command', 'echo ' + tab[i] + ' >> password.txt');
