@@ -22,7 +22,6 @@ export class InteractionConsoleComponent implements OnInit {
       (res) => {
         if(res !== this.lastCommandeUtilisateur){
           this.reponse.push(res);
-          console.log(res);
           this.scrollToBottomShell();
         }
       }

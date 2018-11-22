@@ -20,9 +20,11 @@ export class AttaqueBruteForceComponent {
       if(this.attaqueLancee && res.includes(fini)){
         this.attaqueTerminee = true;
         console.log('! Attaque terminée !');
-        if(this.attaqueTerminee && !this.attaqueSucces){
+        if(!this.attaqueSucces){
           console.log("ECHEC DE L'ATTAQUE");
           this.resetAttack();
+        }else{
+          console.log("SUCCES DE L'ATTAQUE");
         }
       }},(err) => {
       console.log(err);
@@ -74,6 +76,7 @@ export class AttaqueBruteForceComponent {
     this.listeEnvoyee = false;
     this.listeMdp = [];
     this.nouveauMdp = '';
+    this.apiSshService.writePasswordFile(this.listeMdp);
   }
 
 
