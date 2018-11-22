@@ -4,7 +4,7 @@ import {AppComponent} from './app.component';
 @Component({
   selector: 'login',
   templateUrl: './login.html',
-  styleUrls: ['./login.scss', 'global.scss']
+  styleUrls: ['global.scss']
 })
 
 export class LoginComponent {

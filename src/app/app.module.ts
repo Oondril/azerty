@@ -14,6 +14,7 @@ import {ApiSshService} from './services/api-ssh.service';
 import {InteractionConsoleComponent} from './exercices/données/interaction-console.component';
 import {FichierMdpComponent} from './exercices/données/fichier-mdp.component';
 import {LoadingComponent} from './components/loading.component';
+import {AttaqueBruteForceComponent} from './exercices/type/attaque-brute-force.component';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: PageConnexionComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     ExplicationsFonctionnementComponent,
     ExerciceComponent,
     InteractionConsoleComponent,
+    AttaqueBruteForceComponent
     FichierMdpComponent,
     LoadingComponent
   ],

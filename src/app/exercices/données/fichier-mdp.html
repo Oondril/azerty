@@ -1,5 +1,0 @@
-<div *ngFor="let mdp of listeMdp; let i = index">
-  {{mdp}}<button (click)="supprimeMdp(i)">X</button>
-</div><br/>
-<input class="shell shell-commande" type="text" [value]="nouveauMdp" (input)="nouveauMdp = $event.target.value" placeholder="Commande"/>
-<button class="bouton-suite" (click)="ajouteMdp(nouveauMdp)">Valider</button>

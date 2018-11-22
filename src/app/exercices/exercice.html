@@ -1,5 +1,4 @@
-<h3 class="titre-exercice">Injection SQL</h3>
-
+<!--
 <div *ngIf="pageExercice === 0">
   <div class="explications">
     <explications-attaque></explications-attaque>
@@ -28,4 +27,9 @@
   <div class="center">
     <button class="bouton-suite" (click)="suite()">Terminer</button>
   </div>
+</div>
+-->
+
+<div class="exercice" *ngIf="typeExercice === 'brute-force'">
+  <attaque-brute-force></attaque-brute-force>
 </div>

