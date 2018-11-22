@@ -1,13 +1,8 @@
 @import '~sass/variables';
 
-.titre-exercice{
-  margin: 0 20px;
-  padding: 10px;
-  border-radius: 5px;
-  color: $couleur3;
-  border: solid 1px $couleur4;
-  background-color: white;
-  text-align: center;
+.exercice{
+  margin: 100px;
+  text-align: justify;
 }
 
 .explications{
@@ -15,14 +10,4 @@
   padding: 10px;
   border: solid 1px $couleur4;
   background-color: white;
-}
-
-.bouton-suite{
-  margin: 0;
-  color: $couleur1;
-  border: solid 1px $couleur4;
-}
-
-.bouton-suite:hover{
-  border: solid 1px $couleur1;
 }

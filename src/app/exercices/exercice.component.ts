@@ -7,16 +7,25 @@ import {ApiService} from '../services/api.service';
   styleUrls: ['exercice.scss', '../global.scss']
 })
 
-export class ExerciceComponent /*implements OnInit*/{
+export class ExerciceComponent implements OnInit{
 
   pageExercice = 0;
   plus = false;
+  public titreExercice = "";
+  public typeExercice = "brute-force";
 
   //constructor(private apiService: ApiService){}
 
-  /*ngOnInit(){
-    this.apiService.getExercice();
-  }*/
+  ngOnInit(){
+    this.getTypeExercice();
+  }
+
+  getTypeExercice(){
+    //this.apiService.getExercice();
+    if(this.typeExercice == "brute-force"){
+      this.titreExercice = "BruteForce";
+    }
+  }
 
   suite() {
     this.pageExercice = this.pageExercice + 1;

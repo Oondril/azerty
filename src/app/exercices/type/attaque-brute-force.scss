@@ -1,18 +1,26 @@
 @import '~sass/variables';
 
 .bouton-suppression{
-  color: $couleur5;
+  color: $couleur4;
   font-weight: bold;
-  vertical-align: middle;
 }
 
 .bouton-suppression:hover{
   cursor: pointer;
+  width: 300px;
 }
 
 .fichier{
-  border: solid 1px $couleur1;
+  min-height: 30px;
+  border: solid 1px $couleur4;
   padding: 2px 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.input-mdp{
+  width: initial;
+  margin-right: 0;
 }
 
 .mdp:hover{
