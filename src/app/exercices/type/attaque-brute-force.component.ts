@@ -9,10 +9,33 @@ import {ApiSshService} from '../../services/api-ssh.service';
 
 export class AttaqueBruteForceComponent {
 
-  constructor(private apiSshService: ApiSshService){}
+  constructor(private apiSshService: ApiSshService){
+    this.apiSshService.shellAnswer.subscribe((res) => {
+      let succes = '[22][ssh]';
+      let fini ='root@kali';
+      if(res.includes(succes)){
+        this.succesLine = res;
+        this.attaqueSucces = true;
+      }
+      if(this.attaqueLancee && res.includes(fini)){
+        this.attaqueTerminee = true;
+        console.log('! Attaque terminée !');
+        if(this.attaqueTerminee && !this.attaqueSucces){
+          console.log("ECHEC DE L'ATTAQUE");
+          this.resetAttack();
+        }
+      }},(err) => {
+      console.log(err);
+    });
+  }
 
   public listeMdp = [];
   public nouveauMdp = "";
+  public listeEnvoyee = false;
+  public attaqueLancee = false;
+  public attaqueSucces = false;
+  public attaqueTerminee = false;
+  public succesLine = '';
 
   onKeydown(event, mdp){
     this.ajouterMdp(mdp);
@@ -35,10 +58,23 @@ export class AttaqueBruteForceComponent {
 
   envoyerListeMdp(){
     this.apiSshService.writePasswordFile(this.listeMdp);
+    this.listeEnvoyee = true;
   }
 
   attaquer(){
     this.apiSshService.runBruteForceAttack();
+    this.attaqueLancee = true;
   }
+
+  resetAttack(){
+    this.attaqueTerminee = false;
+    this.attaqueLancee = false;
+    this.attaqueSucces = false;
+    this.succesLine = '';
+    this.listeEnvoyee = false;
+    this.listeMdp = [];
+    this.nouveauMdp = '';
+  }
+
 
 }

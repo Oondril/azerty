@@ -24,6 +24,8 @@
   <div class="colonne">
     <button class="bouton-suite" (click)="ajouterMdp(nouveauMdp)">Ajouter</button>
   </div>
-  <button class="bouton-suite" (click)="envoyerListeMdp()">Envoyer</button>
-  <button (click)="attaquer()">Attaquer !!</button>
+  <button *ngIf='!this.listeEnvoyee'class="bouton-suite" (click)="envoyerListeMdp()">Envoyer</button>
+  <button *ngIf='this.listeEnvoyee' disabled class="bouton-suite" >Envoyer</button>
+  <button *ngIf='this.listeEnvoyee' (click)="attaquer()">!! Attaquer !!</button>
+  <interaction-console class='cachee' [ngClass]="{'visible' : this.attaqueLancee }" ></interaction-console>
 </div>
