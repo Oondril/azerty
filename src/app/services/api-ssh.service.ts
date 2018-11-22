@@ -67,7 +67,7 @@ export class ApiSshService {
      this.socket.on('shellexecanswer', function (data) {
        if(data === undefined){
          console.log('undefined data :(');
-       }else {
+       }else
          console.log(data);
        }
      })
