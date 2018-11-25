@@ -1,0 +1,16 @@
+.shell{
+  background-color: black;
+  color: white;
+  font-family: "Courier New";
+  border: none;
+  border-radius: 0;
+}
+
+.message{
+  color: white;
+}
+
+.scrollable-content{
+  overflow-y: scroll;
+  height:400px;
+}

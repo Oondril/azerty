@@ -16,21 +16,26 @@ export class AttaqueBruteForceComponent {
       if(res.includes(succes)){
         this.succesLine = res;
         this.attaqueSucces = true;
+
+        this.consoleNoobLog(this.resultSuccesTreatment(res));
       }
       if(this.attaqueLancee && res.includes(fini)){
         this.attaqueTerminee = true;
         console.log('! Attaque terminée !');
         if(!this.attaqueSucces){
           console.log("ECHEC DE L'ATTAQUE");
+          this.consoleNoobLog("<b>-></b> Echec de l'attaque");
           this.resetAttack();
         }else{
           console.log("SUCCES DE L'ATTAQUE");
+          this.consoleNoobLog("<b>-></b> Succès de l'attaque");
         }
       }},(err) => {
       console.log(err);
     });
   }
 
+  public messageNoob = '';
   public listeMdp = [];
   public nouveauMdp = "";
   public listeEnvoyee = false;
@@ -66,6 +71,7 @@ export class AttaqueBruteForceComponent {
   attaquer(){
     this.apiSshService.runBruteForceAttack();
     this.attaqueLancee = true;
+    this.consoleNoobLog("<b>-></b> Démarrage de l'attaque ... ");
   }
 
   resetAttack(){
@@ -77,6 +83,24 @@ export class AttaqueBruteForceComponent {
     this.listeMdp = [];
     this.nouveauMdp = '';
     this.apiSshService.writePasswordFile(this.listeMdp);
+  }
+
+  consoleNoobLog(msg: string){
+    this.messageNoob = msg;
+    console.log('messageNoob : '+ this.messageNoob);
+  }
+
+  resultSuccesTreatment(str: string){
+    let loginName = 'login: ';
+    let psswdName = 'password: ';
+    let indexLogin = str.indexOf(loginName);
+    let indexPassword = str.indexOf(psswdName);
+    let login = str.slice(indexLogin, indexPassword);
+    let password = str.slice(indexPassword);
+    let loginFinal = login.slice(loginName.length);
+    let passwordFinal = password.slice(psswdName.length);
+    const log = "<b>-></b> Identifiants valides :  <br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;<> Identifiant : <b>" + loginFinal + "</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;<> Mot de passe : <b>" + passwordFinal + "</b></br></br>";
+    return log;
   }
 
 

@@ -14,6 +14,7 @@ import {ApiSshService} from './services/api-ssh.service';
 import {InteractionConsoleComponent} from './exercices/données/interaction-console.component';
 import {LoadingComponent} from './components/loading.component';
 import {AttaqueBruteForceComponent} from './exercices/type/attaque-brute-force.component';
+import {ConsoleNoobComponent} from './components/console-noob.component';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: PageConnexionComponent },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     ExerciceComponent,
     InteractionConsoleComponent,
     AttaqueBruteForceComponent,
-    LoadingComponent
+    LoadingComponent,
+    ConsoleNoobComponent
   ],
   imports: [
     BrowserModule,
