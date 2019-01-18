@@ -1,4 +1,6 @@
 <div class="container">
+  <button (click)="this.getScenario()"></button>
+  <div>{{this.data}}</div>
   <div [innerHTML]="text" class="explications"></div>
   <div class='button' *ngFor="let choix of propositions">
     <button>{{choix.text}}</button>

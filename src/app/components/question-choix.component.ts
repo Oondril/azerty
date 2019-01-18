@@ -2,6 +2,7 @@ import {AppComponent} from '../app.component';
 import {Component} from '@angular/core';
 import { Timer } from '../utils/chrono/timer';
 import { State } from '../utils/chrono/state';
+import {ApirestService} from '../services/apirest.service';
 
 @Component({
   selector: 'question-choix-component',
@@ -15,7 +16,15 @@ export class QuestionChoixComponent {
  propositions = [{id: 0, text: 'faire ceci'},
                   {id : 1, text: 'faire cela'},
                   {id:2, text: 'faire ceci cela'}];
-  constructor() {
+
+ public data;
+
+  constructor(private apirestservice: ApirestService) {
   }
+
+  getScenario() {
+    this.apirestservice.getScenario();
+  }
+
 
 }

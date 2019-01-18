@@ -17,6 +17,8 @@ import {AttaqueBruteForceComponent} from './exercices/type/attaque-brute-force.c
 import {ConsoleNoobComponent} from './components/console-noob.component';
 import {ChronoComponent} from './components/chrono.component';
 import {QuestionChoixComponent} from './components/question-choix.component';
+import {ApirestService} from './services/apirest.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: PageConnexionComponent },
@@ -43,11 +45,13 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    HttpClientModule
   ],
   providers: [
     ApiService,
-    ApiSshService
+    ApiSshService,
+    ApirestService
   ],
   bootstrap: [AppComponent]
 })
