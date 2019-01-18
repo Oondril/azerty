@@ -15,6 +15,8 @@ import {InteractionConsoleComponent} from './exercices/données/interaction-cons
 import {LoadingComponent} from './components/loading.component';
 import {AttaqueBruteForceComponent} from './exercices/type/attaque-brute-force.component';
 import {ConsoleNoobComponent} from './components/console-noob.component';
+import {ChronoComponent} from './components/chrono.component';
+import {QuestionChoixComponent} from './components/question-choix.component';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: PageConnexionComponent },
@@ -33,7 +35,9 @@ const appRoutes: Routes = [
     InteractionConsoleComponent,
     AttaqueBruteForceComponent,
     LoadingComponent,
-    ConsoleNoobComponent
+    ConsoleNoobComponent,
+    ChronoComponent,
+    QuestionChoixComponent
   ],
   imports: [
     BrowserModule,

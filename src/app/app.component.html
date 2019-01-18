@@ -2,17 +2,17 @@
 <div class="banner-logo">
   <img class="logo" src="../assets/logo/logo.png">
 </div>
-<div class="menu"></div>
 <div class="triangle-banner-logo">
 </div>
 <div class="banner">
   <div class="title">Titre nsm</div>
+  <chrono-component></chrono-component>
 </div>
-
 <!--<loading-component></loading-component>-->
 
 <div *ngIf="page === 0">
-  <login></login>
+  <!--<login></login>-->
+  <question-choix-component></question-choix-component>
 </div>
 
 <div *ngIf="page === 1">

