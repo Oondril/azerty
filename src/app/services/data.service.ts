@@ -44,14 +44,16 @@ export class DataService {
       .subscribe(
         res => {
           console.log(res);
-          let scenario : ModeleScenario = new ModeleScenario(
-            res.Data[0].idScenario,
-            res.Data[0].duree,
-            res.Data[0].titre,
-            res.Data[0].contexte
-          );
-          this.dataScenario = scenario;
-          this._scenario.next(scenario);
+          for(let i=0; i<res.length-1; i++){
+            let scenario : ModeleScenario = new ModeleScenario(
+              res.Data[i].idScenario,
+              res.Data[i].duree,
+              res.Data[i].titre,
+              res.Data[i].contexte
+            );
+            this.dataScenario += scenario;
+            this._scenario.next(scenario);
+          }
           console.log(this.dataScenario);
         },
         err => {
@@ -66,11 +68,11 @@ export class DataService {
         res => {
           console.log(res);
           let texte : ModeleTexte = new ModeleTexte(
-            res.Data[0].idTexte,
-            res.Data[0].idScenario,
-            res.Data[0].titre,
-            res.Data[0].texte,
-            res.Data[0].branche
+            res.Data.idTexte,
+            res.Data.idScenario,
+            res.Data.titre,
+            res.Data.texte,
+            res.Data.branche
           );
           this.dataTexte = texte;
           this._texte.next(texte);

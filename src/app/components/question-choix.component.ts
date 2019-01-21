@@ -22,6 +22,10 @@ export class QuestionChoixComponent {
   constructor(private dataService: DataService) {
   }
 
+  getScenario(){
+    this.dataService.getScenario();
+  }
+
   getTexte(){
     this.dataService.getTextes();
   }
