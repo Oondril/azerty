@@ -3,24 +3,59 @@ import 'rxjs/add/operator/catch';
 import {Normalizer} from "../utils/normalizer";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from 'rxjs/Observable';
-import {ExerciceResponse} from '../exercices/models/response/exercice.response';
+import {ScenarioResponse} from '../exercices/models/response/scenario.response';
+import {environment} from '../../environments/environment';
+import {Response} from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class ApiService {
 
-  protected url : '?/api/';
+  protected url:string;
   protected headers;
 
   constructor(protected http:HttpClient)  {
+    this.url = 'http://' + environment.apiUrl + '/api';
     this.http = http;
-    this.headers = new HttpHeaders({
+    /*this.headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
       'Accept': 'application/json'
-    });
+    });*/
   }
 
-  getExercice():Observable<ExerciceResponse>{
-    return this.http.get(this.url + 'exercice');
+  getScenario():Observable<any>{
+    return this.http.get(this.url + '/scenario/')
+      .map(
+        (res:Response) => res
+      );
+  }
+
+  getTextes():Observable<any>{
+    return this.http.get(this.url + '/textes/')
+      .map(
+        (res:Response) => res
+      );
+  }
+
+  getActions():Observable<any>{
+    return this.http.get(this.url + '/actions/')
+      .map(
+        (res:Response) => res
+      );
+  }
+
+  getPrevention():Observable<any>{
+    return this.http.get(this.url + '/prevention/')
+      .map(
+        (res:Response) => res
+      );
+  }
+
+  getIndice():Observable<any>{
+    return this.http.get(this.url + '/indice/')
+      .map(
+        (res:Response) => res
+      );
   }
 
   /*getUserWelcomeMsg() {

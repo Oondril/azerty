@@ -4,8 +4,8 @@ import {ApiSshService} from '../services/api-ssh.service';
 
 @Component({
   selector: 'console-noob',
-  templateUrl: './console-noob.component.html',
-  styleUrls: ['./console-noob.component.scss', '../global.scss']
+  templateUrl: './console-noob.html',
+  styleUrls: ['./console-noob.scss', '../global.scss']
 })
 
 export class ConsoleNoobComponent implements OnChanges{

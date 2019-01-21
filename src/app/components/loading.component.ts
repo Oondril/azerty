@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'loading-component',
-  templateUrl: './loading.component.html',
-  styleUrls: ['./loading.component.scss', '../global.scss']
+  templateUrl: './loading.html',
+  styleUrls: ['./loading.scss', '../global.scss']
 })
 
 export class LoadingComponent {

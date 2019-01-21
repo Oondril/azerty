@@ -5,8 +5,8 @@ import { State } from '../utils/chrono/state';
 
 @Component({
   selector: 'chrono-component',
-  templateUrl: './chrono.component.html',
-  styleUrls: ['./chrono.component.scss', '../global.scss']
+  templateUrl: './chrono.html',
+  styleUrls: ['./chrono.scss', '../global.scss']
 })
 
 export class ChronoComponent {
