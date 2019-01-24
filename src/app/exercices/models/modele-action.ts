@@ -1,50 +1,55 @@
 export class ModeleAction {
 
-  private _id_action: number;
-  private _id_scenario: number;
-  private _id_textes: string;
+  private _idAction: number;
+  private _idScenario: number;
+  private _idTextes: string;
   private _texte: string;
-  private _texte_suivant: string;
-  private _est_utilisee: boolean;
-  private _a_prevention: boolean;
-  private _a_indice: boolean;
+  private _texteSuivant: string;
+  private _estUtilisee: boolean;
+  private _aPrevention: boolean;
+  private _aIndice: boolean;
 
   get idAction(): number {
-    return this._id_action;
+    return this._idAction;
   }
 
   get idScenario(): number {
-    return this._id_scenario;
+    return this._idScenario;
   }
 
   get idTextes(): string {
-    return this._id_textes;
+    return this._idTextes;
+  }
+
+  get texte(): string {
+    return this._texte;
   }
 
   get texteSuivant(): string {
-    return this._texte_suivant;
+    return this._texteSuivant;
   }
 
   get estUtilisee(): boolean {
-    return this._est_utilisee;
+    return this._estUtilisee;
   }
 
   get aPrevention(): boolean {
-    return this._a_prevention;
+    return this._aPrevention;
   }
 
   get aIndice(): boolean {
-    return this._a_indice;
+    return this._aIndice;
   }
 
   constructor(id_action, id_scenario, id_textes, texte, texte_suivant, est_utilisee, a_prevention, a_indice) {
-    this._id_action = id_action;
-    this._id_scenario = id_scenario;
-    this._id_textes = id_textes;
+    this._idAction = id_action;
+    this._idScenario = id_scenario;
+    let tabIdTextes = id_textes.split(', ',id_textes.length-1);
+    this._idTextes = tabIdTextes;
     this._texte = texte;
-    this._texte_suivant = texte_suivant;
-    this._est_utilisee = est_utilisee;
-    this._a_prevention = a_prevention;
-    this._a_indice = a_indice;
+    this._texteSuivant = texte_suivant;
+    this._estUtilisee = est_utilisee;
+    this._aPrevention = a_prevention;
+    this._aIndice = a_indice;
   }
 }

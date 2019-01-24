@@ -8,17 +8,19 @@
   <div class="title">Titre nsm</div>
   <chrono-component></chrono-component>
 </div>
-<!--<loading-component></loading-component>-->
+<loading-component *ngIf="this.loadingService.observer == true"></loading-component>
 
-<div *ngIf="page === 0">
-  <!--<login></login>-->
-  <question-choix-component></question-choix-component>
-</div>
+<div class="contener">
+  <div *ngIf="page === 0">
+    <!--<login></login>-->
+    <intro-component></intro-component>
+  </div>
 
-<div *ngIf="page === 1">
-  <page-connexion></page-connexion>
-</div>
+  <div *ngIf="page === 1">
+    <page-connexion></page-connexion>
+  </div>
 
-<div *ngIf="page === 3">
-  <exercice></exercice>
+  <div *ngIf="page === 3">
+    <exercice></exercice>
+  </div>
 </div>

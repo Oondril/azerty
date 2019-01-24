@@ -1,12 +1,12 @@
 export class ModeleScenario {
 
-  private _id_scenario: number;
+  private _idScenario: number;
   private _duree: number;
   private _titre: string;
   private _contexte: string;
 
   get idScenario(): number {
-    return this._id_scenario;
+    return this._idScenario;
   }
 
   get duree(): number {
@@ -22,7 +22,7 @@ export class ModeleScenario {
   }
 
   constructor(id_scenario, duree, titre, contexte) {
-    this._id_scenario = id_scenario;
+    this._idScenario = id_scenario;
     this._duree = duree;
     this._titre = titre;
     this._contexte = contexte;

@@ -1,17 +1,17 @@
 export class ModeleTexte {
 
-  private _id_texte: number;
-  private _id_scenario: number;
+  private _idTexte: number;
+  private _idScenario: number;
   private _titre: string;
   private _texte: string;
   private _branche: string;
 
   get idTexte(): number {
-    return this._id_texte;
+    return this._idTexte;
   }
 
   get idScenario(): number {
-    return this._id_scenario;
+    return this._idScenario;
   }
 
   get titre(): string {
@@ -27,8 +27,8 @@ export class ModeleTexte {
   }
 
   constructor(id_texte, id_scenario, titre, texte, branche) {
-    this._id_texte = id_texte;
-    this._id_scenario = id_scenario;
+    this._idTexte = id_texte;
+    this._idScenario = id_scenario;
     this._titre = titre;
     this._texte = texte;
     this._branche = branche;

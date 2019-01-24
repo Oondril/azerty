@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div *ngIf="!showContexteScenario">
+  <h3>AVERTISSEMENT</h3>
+  L'article 323-1 du code pénal sanctionne «le fait d'accéder ou de se maintenir frauduleusement, dans tout ou partie
+  d'un système de traitement automatisé». La peine encourue est 2 ans d'emprisonnement et 30000€ d'amende. Celle-ci
+  peut être portée à 3 ans d'emprisonnement et 45000€ d'amende lorsqu'il en résulte «soit la suppression, soit la
+  modifications de données contenues dans le système, soit un altération du fonctionnement de ce système».
+  Le hacker encourt également, au titre des peines complémentaires, la confiscation du matériel informatique qui a
+  servi ou était destiné à commettre l'infraction.<br/>
+  Il convient de préciser que le hacker engage sa responsabilité pénale mais également sa responsabilité civile. Il
+  devra ainsi verser des dommages-intérêts à la victime pour l'indemniser.
 
-</body>
-</html>
+  <div class="center">
+    <button (click)="suivant()">J'ai compris</button>
+  </div>
+</div>
+
+<!--<div *ngIf="!this.isLoading">
+  {{this.currentScenario.contexte}}-->
+<div *ngIf="this.showContexteScenario">
+  Contexte
+  <div class="center">
+    <button (click)="commencer()">Commencer</button>
+  </div>
+</div>

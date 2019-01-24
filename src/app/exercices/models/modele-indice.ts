@@ -1,20 +1,20 @@
 export class ModeleIndice {
 
-  private _id_indice: number;
-  private _id_scenario: number;
-  private _id_action: number;
+  private _idIndice: number;
+  private _idScenario: number;
+  private _idAction: number;
   private _texte: string;
 
   get idIndice(): number {
-    return this._id_indice;
+    return this._idIndice;
   }
 
   get idScenario(): number {
-    return this._id_scenario;
+    return this._idScenario;
   }
 
   get idAction(): number {
-    return this._id_action;
+    return this._idAction;
   }
 
   get texte(): string {
@@ -22,9 +22,9 @@ export class ModeleIndice {
   }
 
   constructor(id_indice, id_scenario, id_action, texte) {
-    this._id_indice = id_indice;
-    this._id_scenario = id_scenario;
-    this._id_action = id_action;
+    this._idIndice = id_indice;
+    this._idScenario = id_scenario;
+    this._idAction = id_action;
     this._texte = texte;
   }
 }

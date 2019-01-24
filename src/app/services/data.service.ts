@@ -31,11 +31,11 @@ export class DataService {
   private _indice: Subject<any> = new Subject();
   public indice: Observable<IndiceResponse> = this._indice.asObservable();
 
-  public dataScenario : ModeleScenario;
-  public dataTexte : ModeleTexte;
-  public dataAction : ModeleAction;
-  public dataPrevention : ModelePrevention;
-  public dataIndice : ModeleIndice;
+  public dataScenario = [];
+  public dataTexte = [];
+  public dataAction = [];
+  public dataPrevention = [];
+  public dataIndice = [];
 
   constructor(private apiService: ApiService) {  }
 
@@ -43,15 +43,14 @@ export class DataService {
     this.apiService.getScenario()
       .subscribe(
         res => {
-          console.log(res);
-          for(let i=0; i<res.length-1; i++){
+          for(let i=0; i<res.Data.length; i++){
             let scenario : ModeleScenario = new ModeleScenario(
               res.Data[i].idScenario,
               res.Data[i].duree,
               res.Data[i].titre,
               res.Data[i].contexte
             );
-            this.dataScenario += scenario;
+            this.dataScenario.push(scenario);
             this._scenario.next(scenario);
           }
           console.log(this.dataScenario);
@@ -66,16 +65,17 @@ export class DataService {
     this.apiService.getTextes()
       .subscribe(
         res => {
-          console.log(res);
-          let texte : ModeleTexte = new ModeleTexte(
-            res.Data.idTexte,
-            res.Data.idScenario,
-            res.Data.titre,
-            res.Data.texte,
-            res.Data.branche
-          );
-          this.dataTexte = texte;
-          this._texte.next(texte);
+          for(let i=0; i<res.Data.length; i++) {
+            let texte: ModeleTexte = new ModeleTexte(
+              res.Data[i].idTexte,
+              res.Data[i].idScenario,
+              res.Data[i].titre,
+              res.Data[i].texte,
+              res.Data[i].branche
+            );
+            this.dataTexte.push(texte);
+            this._texte.next(texte);
+          }
           console.log(this.dataTexte);
         },
         err => {
@@ -88,19 +88,20 @@ export class DataService {
     this.apiService.getActions()
       .subscribe(
         res => {
-          console.log(res);
-          let action : ModeleAction = new ModeleAction(
-            res.Data[0].idAction,
-            res.Data[0].idScenario,
-            res.Data[0].idTextes,
-            res.Data[0].texte,
-            res.Data[0].texteSuivant,
-            res.Data[0].estUtilisee,
-            res.Data[0].aPrevention,
-            res.Data[0].aIndice
-          );
-          this.dataAction = action;
-          this._action.next(action);
+          for(let i=0; i<res.Data.length; i++) {
+            let action: ModeleAction = new ModeleAction(
+              res.Data[i].idAction,
+              res.Data[i].idScenario,
+              res.Data[i].idTextes,
+              res.Data[i].texte,
+              res.Data[i].texteSuivant,
+              res.Data[i].estUtilisee,
+              res.Data[i].aPrevention,
+              res.Data[i].aIndice
+            );
+            this.dataAction.push(action);
+            this._action.next(action);
+          }
           console.log(this.dataAction);
         },
         err => {
@@ -113,15 +114,16 @@ export class DataService {
     this.apiService.getPrevention()
       .subscribe(
         res => {
-          console.log(res);
-          let prevention : ModelePrevention = new ModelePrevention(
-            res.Data[0].idPrevention,
-            res.Data[0].idScenario,
-            res.Data[0].idAction,
-            res.Data[0].texte
-          );
-          this.dataPrevention = prevention;
-          this._prevention.next(prevention);
+          for(let i=0; i<res.Data.length; i++) {
+            let prevention: ModelePrevention = new ModelePrevention(
+              res.Data[i].idPrevention,
+              res.Data[i].idScenario,
+              res.Data[i].idAction,
+              res.Data[i].texte
+            );
+            this.dataPrevention.push(prevention);
+            this._prevention.next(prevention);
+          }
           console.log(this.dataPrevention);
         },
         err => {
@@ -134,15 +136,16 @@ export class DataService {
     this.apiService.getIndice()
       .subscribe(
         res => {
-          console.log(res);
-          let indice : ModeleIndice = new ModeleIndice(
-            res.Data[0].idIndice,
-            res.Data[0].idScenario,
-            res.Data[0].idAction,
-            res.Data[0].texte
-          );
-          this.dataIndice = indice;
-          this._indice.next(indice);
+          for(let i=0; i<res.Data.length; i++) {
+            let indice: ModeleIndice = new ModeleIndice(
+              res.Data[i].idIndice,
+              res.Data[i].idScenario,
+              res.Data[i].idAction,
+              res.Data[i].texte
+            );
+            this.dataIndice.push(indice);
+            this._indice.next(indice);
+          }
           console.log(this.dataIndice);
         },
         err => {

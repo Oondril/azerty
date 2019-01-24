@@ -1,3 +1,8 @@
+/**
+ * @name IndiceResponse
+ * @desc Response send  (url: /api/indice, authRequest)
+ */
+
 export interface IndiceResponse {
   Data : {
     idIndice:number,

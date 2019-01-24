@@ -20,6 +20,8 @@ import {QuestionChoixComponent} from './components/question-choix.component';
 import {DataService} from './services/data.service';
 import {HttpClientModule} from '@angular/common/http';
 import {IntroComponent} from './components/intro.component';
+import {LoadingService} from './services/loading.service';
+import {ScenarioService} from './services/scenario.service';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: PageConnexionComponent },
@@ -53,7 +55,9 @@ const appRoutes: Routes = [
   providers: [
     ApiService,
     ApiSshService,
-    DataService
+    DataService,
+    LoadingService,
+    ScenarioService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,9 @@
 import {AppComponent} from '../app.component';
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DataService} from '../services/data.service';
+import {ModeleScenario} from '../exercices/models/modele-scenario';
+import {LoadingService} from '../services/loading.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'intro-component',
@@ -8,19 +11,50 @@ import {DataService} from '../services/data.service';
   styleUrls: ['./intro.scss', '../global.scss']
 })
 
-export class IntroComponent {
+export class IntroComponent implements OnInit {
 
-  text = '<br/>Faire blablablabla<br/>Et aussi blablablabla<br/>Et enfin blablabla';
-  propositions = [{id: 0, text: 'faire ceci'},
-    {id : 1, text: 'faire cela'},
-    {id:2, text: 'faire ceci cela'}];
+  private scenario;
+  private choixScenario = 1;
 
-  public data;
+  public currentScenario;
+  public isLoading;
+  public showContexteScenario;
 
-  constructor(private dataService: DataService) {
-  }
+  constructor(private dataService: DataService, private loadingService : LoadingService) { }
 
-  getScenario() {
+  ngOnInit(){
+    this.showContexteScenario = false;
+    this.isLoading = true;
     this.dataService.getScenario();
+    this.loadingService.displayLoadingSpinner(true);
+    Observable.merge(
+      this.dataService.scenario.map(
+        res => {
+          this.scenario = res;
+          for(let i=0; i<this.scenario.length; i++){
+            if(this.scenario[i].idScenario == this.choixScenario)
+              this.currentScenario = this.scenario[i];
+          }
+          console.log(this.currentScenario);
+        }, error => {
+          console.log(error);
+        }
+      )
+    ).skip(0).subscribe(
+      res => {
+        this.loadingService.displayLoadingSpinner(false);
+        this.isLoading = false;
+        console.log("skip")
+      }
+    );
   }
+
+  suivant(){
+    this.showContexteScenario = true;
+  }
+
+  commencer(){
+    console.log("start");
+  }
+
 }

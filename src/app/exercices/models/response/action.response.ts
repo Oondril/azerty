@@ -1,3 +1,8 @@
+/**
+ * @name ActionResponse
+ * @desc Response send  (url: /api/actions, authRequest)
+ */
+
 export interface ActionResponse {
   Data : {
     idAction:number,
