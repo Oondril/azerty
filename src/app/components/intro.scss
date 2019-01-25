@@ -1,0 +1,17 @@
+@import '~sass/variables';
+
+.action{
+  cursor: pointer;
+}
+
+.action:hover{
+  color: $couleur1;
+}
+
+.puce{
+  color: $couleur2;
+}
+
+.puce:hover{
+  color: $couleur1;
+}

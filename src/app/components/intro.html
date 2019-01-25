@@ -1,4 +1,4 @@
-<div *ngIf="!showContexteScenario">
+<div *ngIf="!showContexteScenario && !this.isScenarioStarted">
   <h3>AVERTISSEMENT</h3>
   L'article 323-1 du code pénal sanctionne «le fait d'accéder ou de se maintenir frauduleusement, dans tout ou partie
   d'un système de traitement automatisé». La peine encourue est 2 ans d'emprisonnement et 30000€ d'amende. Celle-ci
@@ -14,11 +14,18 @@
   </div>
 </div>
 
-<!--<div *ngIf="!this.isLoading">
-  {{this.currentScenario.contexte}}-->
-<div *ngIf="this.showContexteScenario">
-  Contexte
+<div *ngIf="this.showContexteScenario && !this.isScenarioStarted">
+  {{this.currentScenario.contexte}}
   <div class="center">
-    <button (click)="commencer()">Commencer</button>
+    <button (click)="startScenario()">Commencer</button>
+  </div>
+</div>
+
+<div *ngIf="this.isScenarioStarted">
+  {{this.currentTexte.texte}}
+  <div *ngFor="let action of this.listeActionsCurrentTexte">
+    <div class="action" *ngIf="!action.estUtilisee" (click)="nextTexte(action)">
+      <span class="puce">‣</span> {{action.texte}}
+    </div>
   </div>
 </div>

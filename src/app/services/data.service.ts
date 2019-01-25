@@ -51,7 +51,7 @@ export class DataService {
               res.Data[i].contexte
             );
             this.dataScenario.push(scenario);
-            this._scenario.next(scenario);
+            this._scenario.next(this.dataScenario);
           }
           console.log(this.dataScenario);
         },
@@ -74,7 +74,7 @@ export class DataService {
               res.Data[i].branche
             );
             this.dataTexte.push(texte);
-            this._texte.next(texte);
+            this._texte.next(this.dataTexte);
           }
           console.log(this.dataTexte);
         },
@@ -100,7 +100,7 @@ export class DataService {
               res.Data[i].aIndice
             );
             this.dataAction.push(action);
-            this._action.next(action);
+            this._action.next(this.dataAction);
           }
           console.log(this.dataAction);
         },
@@ -122,7 +122,7 @@ export class DataService {
               res.Data[i].texte
             );
             this.dataPrevention.push(prevention);
-            this._prevention.next(prevention);
+            this._prevention.next(this.dataPrevention);
           }
           console.log(this.dataPrevention);
         },
@@ -144,7 +144,7 @@ export class DataService {
               res.Data[i].texte
             );
             this.dataIndice.push(indice);
-            this._indice.next(indice);
+            this._indice.next(this.dataIndice);
           }
           console.log(this.dataIndice);
         },

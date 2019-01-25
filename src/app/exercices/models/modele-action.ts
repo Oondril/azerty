@@ -33,6 +33,10 @@ export class ModeleAction {
     return this._estUtilisee;
   }
 
+  set estUtilisee(value:boolean) {
+    this._estUtilisee = value;
+  }
+
   get aPrevention(): boolean {
     return this._aPrevention;
   }

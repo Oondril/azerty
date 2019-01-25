@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {AppComponent} from './app.component';
 
 @Component({
   selector: 'login',
@@ -9,9 +8,7 @@ import {AppComponent} from './app.component';
 
 export class LoginComponent {
 
-  constructor(private appComponent:AppComponent) { }
+  constructor() { }
 
-  connexion(){
-    this.appComponent.page = 1;
-  }
+  connexion(){  }
 }

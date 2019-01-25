@@ -31,6 +31,8 @@ export class QuestionChoixComponent implements OnInit {
     this.showContexteScenario = false;
     this.isLoading = true;
     this.dataService.getScenario();
+    this.dataService.getTextes();
+    this.dataService.getAction();
     this.loadingService.displayLoadingSpinner(true);
     Observable.merge(
       this.dataService.scenario.map(
@@ -39,6 +41,16 @@ export class QuestionChoixComponent implements OnInit {
           for(let i=0; i<this.scenario.length; i++){
             if(this.scenario[i].idScenario == this.choixScenario)
               this.currentScenario = this.scenario[i];
+          }
+          console.log(this.currentScenario);
+        }, error => {
+          console.log(error);
+        }
+      ),
+      this.dataService.texte.map(
+        res =>{
+          this.textes = res;
+          for(let i=0; i<this.textes.length; i++){
           }
           console.log(this.currentScenario);
         }, error => {

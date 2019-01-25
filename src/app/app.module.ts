@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
-import {PageConnexionComponent} from './page-connexion.component';
 import {LoginComponent} from './login.component';
 import {ExerciceComponent} from './exercices/exercice.component';
 import {ExplicationsAttaqueComponent} from './exercices/données/explications-attaque.component';
@@ -21,17 +20,15 @@ import {DataService} from './services/data.service';
 import {HttpClientModule} from '@angular/common/http';
 import {IntroComponent} from './components/intro.component';
 import {LoadingService} from './services/loading.service';
-import {ScenarioService} from './services/scenario.service';
 
 const appRoutes: Routes = [
-  { path: 'welcome-page', component: PageConnexionComponent },
+  { path: 'welcome-page', component: IntroComponent },
   /*{ path: '**', component: PageNotFoundComponent }*/
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageConnexionComponent,
     LoginComponent,
     ExplicationsAttaqueComponent,
     ExplicationsExerciceComponent,
@@ -56,8 +53,7 @@ const appRoutes: Routes = [
     ApiService,
     ApiSshService,
     DataService,
-    LoadingService,
-    ScenarioService
+    LoadingService
   ],
   bootstrap: [AppComponent]
 })
