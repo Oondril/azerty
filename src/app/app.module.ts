@@ -20,6 +20,7 @@ import {DataService} from './services/data.service';
 import {HttpClientModule} from '@angular/common/http';
 import {IntroComponent} from './components/intro.component';
 import {LoadingService} from './services/loading.service';
+import {ChronoService} from './services/chrono.service';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: IntroComponent },
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     ApiService,
     ApiSshService,
     DataService,
-    LoadingService
+    LoadingService,
+    ChronoService
   ],
   bootstrap: [AppComponent]
 })

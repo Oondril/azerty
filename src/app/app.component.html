@@ -8,7 +8,7 @@
   <div class="title">Titre nsm</div>
   <chrono-component></chrono-component>
 </div>
-<loading-component *ngIf="this.loadingService.observer == true"></loading-component>
+<loading-component *ngIf="this.isLoading"></loading-component>
 
 <div class="contener">
     <!--<login></login>-->

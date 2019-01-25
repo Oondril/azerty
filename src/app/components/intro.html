@@ -23,8 +23,12 @@
 
 <div *ngIf="this.isScenarioStarted">
   {{this.currentTexte.texte}}
+  <br/><br/>
   <div *ngFor="let action of this.listeActionsCurrentTexte">
-    <div class="action" *ngIf="!action.estUtilisee" (click)="nextTexte(action)">
+    <div class="action" *ngIf="!action.estUtilisee" (click)="goToNextTexte(action)">
+      <span class="puce">‣</span> {{action.texte}}
+    </div>
+    <div class="action-disabled" *ngIf="action.estUtilisee">
       <span class="puce">‣</span> {{action.texte}}
     </div>
   </div>
