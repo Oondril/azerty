@@ -3,13 +3,10 @@ import 'rxjs/add/operator/catch';
 import * as io from 'socket.io-client';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ApiSshService {
-
-  protected urlAPISSH: string = '192.168.56.101';
-  protected urlCible: string = '192.168.56.102';
-  protected portSocket: string = '8888';
 
   socket: SocketIOClient.Socket = null;
 
@@ -18,7 +15,7 @@ export class ApiSshService {
 
   constructor() {
     //Ouverture d'un socket entre l'app et l'API SSH
-    this.connectSocket('http://' + this.urlAPISSH + ':' + this.portSocket);
+    this.connectSocket('http://' + environment.apiSSHurl + ':' + environment.apiSSHport);
     this.shellAnswer = new Observable(observer => {
       this.socket.on('data', function (data, res) {
         observer.next(data);
@@ -92,6 +89,6 @@ export class ApiSshService {
   }
 
   runBruteForceAttack() {
-    this.socket.emit('command', 'hydra -V -L username.txt -P password.txt ' + this.urlCible + ' -t 4 ssh\r');
+    this.socket.emit('command', 'hydra -V -L username.txt -P password.txt ' + environment.urlCible + ' -t 4 ssh\r');
   }
 }

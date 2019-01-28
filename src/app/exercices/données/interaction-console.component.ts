@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ApiSshService} from '../../services/api-ssh.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'interaction-console',
@@ -17,7 +18,7 @@ export class InteractionConsoleComponent implements OnInit {
   constructor(private apiSshService: ApiSshService){}
 
   ngOnInit(){
-    this.apiSshService.connectSsh('192.168.56.103', 'root', 'gMeqou0J');
+    this.apiSshService.connectSsh(environment.urlKali, 'root', '!Ofdls@e49!');
     this.apiSshService.shellAnswer.subscribe(
       (res) => {
         if(res !== this.lastCommandeUtilisateur){
