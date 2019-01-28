@@ -31,11 +31,18 @@ export class DataService {
   private _indice: Subject<any> = new Subject();
   public indice: Observable<IndiceResponse> = this._indice.asObservable();
 
-  public dataScenario = [];
+  //Modifier l'indice du scénario ici
+  private choixIndiceScenario = 1;
+
+  private dataScenario = [];
   public dataTexte = [];
   public dataAction = [];
   public dataPrevention = [];
   public dataIndice = [];
+
+  public currentScenario;
+  public listeTextesCurrentScenario = [];
+  public listeActionsCurrentScenario = [];
 
   constructor(private apiService: ApiService) {  }
 
@@ -43,6 +50,7 @@ export class DataService {
     this.apiService.getScenario()
       .subscribe(
         res => {
+          //Récupération de tous les scénarios de la BD
           for(let i=0; i<res.Data.length; i++){
             let scenario : ModeleScenario = new ModeleScenario(
               res.Data[i].idScenario,
@@ -51,9 +59,14 @@ export class DataService {
               res.Data[i].contexte
             );
             this.dataScenario.push(scenario);
-            this._scenario.next(this.dataScenario);
           }
-          console.log(this.dataScenario);
+          //Sélection du scénario à afficher grâce à la variable choixIndiceScenario
+          for(let i=0; i<this.dataScenario.length; i++){
+            if(this.dataScenario[i].idScenario == this.choixIndiceScenario)
+              this.currentScenario = this.dataScenario[i];
+          }
+          this._scenario.next(this.currentScenario);
+          console.log(this.currentScenario);
         },
         err => {
           console.log("erreur");
@@ -65,6 +78,7 @@ export class DataService {
     this.apiService.getTextes()
       .subscribe(
         res => {
+          //Récupération de tous les textes de la BD
           for(let i=0; i<res.Data.length; i++) {
             let texte: ModeleTexte = new ModeleTexte(
               res.Data[i].idTexte,
@@ -74,9 +88,14 @@ export class DataService {
               res.Data[i].branche
             );
             this.dataTexte.push(texte);
-            this._texte.next(this.dataTexte);
           }
-          console.log(this.dataTexte);
+          //Sélection des textes du scénario en cours
+          for(let i=0; i<this.dataTexte.length; i++){
+            if(this.dataTexte[i].idScenario == this.choixIndiceScenario)
+              this.listeTextesCurrentScenario.push(this.dataTexte[i]);
+          }
+          this._texte.next(this.listeTextesCurrentScenario);
+          console.log(this.listeTextesCurrentScenario);
         },
         err => {
           console.log("erreur");
@@ -89,6 +108,7 @@ export class DataService {
       .subscribe(
         res => {
           for(let i=0; i<res.Data.length; i++) {
+            //Récupération de toutes les actions de la BD
             let action: ModeleAction = new ModeleAction(
               res.Data[i].idAction,
               res.Data[i].idScenario,
@@ -100,9 +120,14 @@ export class DataService {
               res.Data[i].aIndice
             );
             this.dataAction.push(action);
-            this._action.next(this.dataAction);
           }
-          console.log(this.dataAction);
+          //Sélection des actions du scénario en cours
+          for(let i=0; i<this.dataAction.length; i++){
+            if(this.dataAction[i].idScenario == this.choixIndiceScenario)
+              this.listeActionsCurrentScenario.push(this.dataAction[i]);
+          }
+          this._action.next(this.listeActionsCurrentScenario);
+          console.log(this.listeActionsCurrentScenario);
         },
         err => {
           console.log("erreur");
@@ -122,8 +147,8 @@ export class DataService {
               res.Data[i].texte
             );
             this.dataPrevention.push(prevention);
-            this._prevention.next(this.dataPrevention);
           }
+          this._prevention.next(this.dataPrevention);
           console.log(this.dataPrevention);
         },
         err => {
@@ -144,8 +169,8 @@ export class DataService {
               res.Data[i].texte
             );
             this.dataIndice.push(indice);
-            this._indice.next(this.dataIndice);
           }
+          this._indice.next(this.dataIndice);
           console.log(this.dataIndice);
         },
         err => {

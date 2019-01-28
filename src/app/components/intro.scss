@@ -6,6 +6,11 @@
 
 .action:hover{
   color: $couleur1;
+  font-weight: 500;
+}
+
+.action-disabled{
+  color: gray;
 }
 
 .puce{

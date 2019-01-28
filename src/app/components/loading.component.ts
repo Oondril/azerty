@@ -8,8 +8,8 @@ import {LoadingService} from "../services/loading.service";
 })
 
 export class LoadingComponent implements OnInit, OnDestroy {
+
   private currentTimeout: any;
-  private subscription:any;
   public isDelayedRunning: boolean = false;
 
   constructor(private elementRef:ElementRef, private loadingService:LoadingService) {}
@@ -58,13 +58,15 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.loadingService.loading$.subscribe(
-      (loading) => this.isDelayedRunning = loading
+    this.loadingService.loading$.subscribe(
+      res => {
+        console.log(res);
+        this.displaySpinner(res);
+      }
     )
   }
 
   ngOnDestroy(): any {
     this.cancelTimeout();
-    this.subscription.unsubscribe();
   }
 }
