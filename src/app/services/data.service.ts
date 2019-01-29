@@ -43,6 +43,8 @@ export class DataService {
   public currentScenario;
   public listeTextesCurrentScenario = [];
   public listeActionsCurrentScenario = [];
+  public listePreventionCurrentScenario = [];
+  public listeIndicesCurrentScenario = [];
 
   constructor(private apiService: ApiService) {  }
 
@@ -140,6 +142,7 @@ export class DataService {
       .subscribe(
         res => {
           for(let i=0; i<res.Data.length; i++) {
+            //Récupération de toutes les preventions de la BD
             let prevention: ModelePrevention = new ModelePrevention(
               res.Data[i].idPrevention,
               res.Data[i].idScenario,
@@ -148,8 +151,13 @@ export class DataService {
             );
             this.dataPrevention.push(prevention);
           }
-          this._prevention.next(this.dataPrevention);
-          console.log(this.dataPrevention);
+          //Sélection de la liste de prévention du scénario en cours
+          for(let i=0; i<this.dataPrevention.length; i++){
+            if(this.dataPrevention[i].idScenario == this.choixIndiceScenario)
+              this.listePreventionCurrentScenario.push(this.dataPrevention[i]);
+          }
+          this._prevention.next(this.listePreventionCurrentScenario);
+          console.log(this.listePreventionCurrentScenario);
         },
         err => {
           console.log("erreur");
@@ -162,6 +170,7 @@ export class DataService {
       .subscribe(
         res => {
           for(let i=0; i<res.Data.length; i++) {
+            //Récupération de tous les indices de la BD
             let indice: ModeleIndice = new ModeleIndice(
               res.Data[i].idIndice,
               res.Data[i].idScenario,
@@ -170,8 +179,13 @@ export class DataService {
             );
             this.dataIndice.push(indice);
           }
-          this._indice.next(this.dataIndice);
-          console.log(this.dataIndice);
+          //Sélection de la liste de prévention du scénario en cours
+          for(let i=0; i<this.dataIndice.length; i++){
+            if(this.dataIndice[i].idScenario == this.choixIndiceScenario)
+              this.listeIndicesCurrentScenario.push(this.dataIndice[i]);
+          }
+          this._indice.next(this.listeIndicesCurrentScenario);
+          console.log(this.listeIndicesCurrentScenario);
         },
         err => {
           console.log("erreur");

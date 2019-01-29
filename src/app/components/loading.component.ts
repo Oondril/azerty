@@ -60,7 +60,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadingService.loading$.subscribe(
       res => {
-        console.log(res);
         this.displaySpinner(res);
       }
     )

@@ -1,5 +1,6 @@
+<!-- Avertissemnt -->
 <div *ngIf="!showContexteScenario && !this.isScenarioStarted">
-  <h3>AVERTISSEMENT</h3>
+  <h4>AVERTISSEMENT</h4>
   L'article 323-1 du code pénal sanctionne «le fait d'accéder ou de se maintenir frauduleusement, dans tout ou partie
   d'un système de traitement automatisé». La peine encourue est 2 ans d'emprisonnement et 30000€ d'amende. Celle-ci
   peut être portée à 3 ans d'emprisonnement et 45000€ d'amende lorsqu'il en résulte «soit la suppression, soit la
@@ -14,22 +15,75 @@
   </div>
 </div>
 
+<!-- Contexte du scénario -->
 <div *ngIf="this.showContexteScenario && !this.isScenarioStarted">
+  <h4>Contexte du scénario</h4>
   {{this.currentScenario.contexte}}
   <div class="center">
     <button (click)="startScenario()">Commencer</button>
   </div>
 </div>
 
+<!-- Scénario -->
 <div *ngIf="this.isScenarioStarted">
-  {{this.currentTexte.texte}}
-  <br/><br/>
-  <div *ngFor="let action of this.listeActionsCurrentTexte">
+  <div class="colonne">
+    <h4>{{this.currentTexte.titre}}</h4>
+  </div>
+
+  <!-- Bouton pour afficher les indices -->
+  <div *ngIf="!this.showListeIndices" class="colonne indices" (click)="showIndices()">Voir les informations recueillies</div>
+  <div *ngIf="this.showListeIndices" class="colonne indices" (click)="closeIndices()">Masquer les informations recueillies</div>
+
+  <!-- Affichage des indices -->
+  <div *ngIf="this.showListeIndices" class="indices-container">
+    <div class="scrollable-content" (click)="this.showListeIndices = !this.showListeIndices" #scrollable>
+      <span class="bouton-close" (click)="closeIndices()">Ⓧ</span>
+      <div *ngFor="let indice of this.listeCurrentIndices">
+        {{indice}}<br/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cas particulier : lancement du brute force -->
+  <div *ngIf="!this.startBruteForce">
+    {{this.currentTexte.texte}}
+  </div>
+
+  <!-- Affichage du scénario -->
+  <div *ngFor="let action of this.listeActionsCurrentTexte" class="center">
     <div class="action" *ngIf="!action.estUtilisee" (click)="goToNextTexte(action)">
-      <span class="puce">‣</span> {{action.texte}}
+      <br/>
+      <span class="puce">►</span> {{action.texte}} <span class="puce">◄</span>
     </div>
     <div class="action-disabled" *ngIf="action.estUtilisee">
-      <span class="puce">‣</span> {{action.texte}}
+      <br/>
+      <span class="puce-disabled">►</span> {{action.texte}} <span class="puce-disabled">◄</span>
     </div>
+  </div>
+
+  <!-- Fin du scénario -->
+  <div *ngIf="this.isScenarioFinished" class="center">
+    <button (click)="finishScenario()">Terminer</button>
+  </div>
+</div>
+
+<!-- Pop-up de prévention -->
+<div *ngIf="this.showPrevention" class="shadowing">
+  <div class="bubble">
+    {{this.currentPrevention.texte}}
+    <br/>
+    <button (click)="closePrevention()">Fermer</button>
+  </div>
+</div>
+
+<!-- Brute force -->
+<div *ngIf="this.showBruteForceButton" class="center">
+  <button (click)="goToBruteForce()">Commencer</button>
+</div>
+
+<div *ngIf="this.startBruteForce">
+  <attaque-brute-force></attaque-brute-force>
+  <div *ngIf="this.isAttackSuccess" class="center">
+    <button (click)="goToConclusion()">Continuer</button>
   </div>
 </div>

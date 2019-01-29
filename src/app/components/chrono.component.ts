@@ -17,7 +17,7 @@ export class ChronoComponent implements OnInit{
 
   private scenario;
   private _btnPlay: string = 'Démarrer';
-  private _timer: Timer = new Timer();
+  public _timer: Timer = new Timer();
   private _state: State = new State();
 
   ngOnInit(){

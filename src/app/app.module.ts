@@ -21,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {IntroComponent} from './components/intro.component';
 import {LoadingService} from './services/loading.service';
 import {ChronoService} from './services/chrono.service';
+import {BruteForceService} from './services/brute-force.service';
 
 const appRoutes: Routes = [
   { path: 'welcome-page', component: IntroComponent },
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     ApiSshService,
     DataService,
     LoadingService,
-    ChronoService
+    ChronoService,
+    BruteForceService
   ],
   bootstrap: [AppComponent]
 })

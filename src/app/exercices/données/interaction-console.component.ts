@@ -51,6 +51,7 @@ export class InteractionConsoleComponent implements OnInit {
     this.envoiCommande();
   }
 
+  //TODO deco quand fin scénario
   deconnexion(){
     this.apiSshService.disconnectSsh();
     this.apiSshService.disconnectSocket();

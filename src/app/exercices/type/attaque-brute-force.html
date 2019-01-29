@@ -1,33 +1,47 @@
 <div class="colonne">
-  EXPLICATIONS <br/>
-  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-  eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-  voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-  voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-  velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-  enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-  consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
-  vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"<br/><br/>
-
-  <console-noob class='cachee' [ngClass]="{'visible' : this.attaqueLancee }" [messageConsoleNoob]="this.messageNoob"></console-noob>
+  A l'aide des informations que vous avez récoltées tout au long du scénario, vous allez tenter d'accéder à l'ordinateur de M.Tetenlair. <br/>
+  Pour cela, vous devez entrer un mot de passe dans le champ prévu à cet effet puis l'ajouter à votre liste en cliquant sur "Entrée". <br/>
+  Lorsque vous aurez ajouté cinq mots de passe, vous pourrez cliquer sur le bouton "Lancer l'attaque" afin de les tester grâce au logiciel.<br/>
+  Si votre liste contient le bon mot de passe vous en serez informé, sinon vous pourrez tester une nouvelle liste. <br/>
+  Bonne chance ! ☺
 </div>
 
 <div class="colonne">
   <div class="fichier">
-    <div class="mdp" *ngFor="let mdp of listeMdp; let i = index">
+    <div class="mdp" [ngClass]="{'disabled' : this.attaqueLancee}" *ngFor="let mdp of listeMdp; let i = index">
       <span class="bouton-suppression" (click)="supprimerMdp(i)">Ⓧ</span> &nbsp;
       {{mdp}}
     </div>
   </div>
-  <div class="colonne">
-    <input class="input-mdp" type="text" (keydown.enter)="onKeydown($event, nouveauMdp)" [value]="nouveauMdp"
-           (input)="nouveauMdp = $event.target.value" placeholder="Mot de passe"/>
+  <input *ngIf="!this.attaqueLancee" class="input-mdp" type="text"
+         (keydown.enter)="onKeydown($event, nouveauMdp)" [value]="nouveauMdp"
+         (input)="nouveauMdp = $event.target.value" placeholder="Mot de passe"/>
+  <input *ngIf="this.attaqueLancee" disabled class="input-mdp" type="text"
+         (keydown.enter)="onKeydown($event, nouveauMdp)" [value]="nouveauMdp"
+         (input)="nouveauMdp = $event.target.value" placeholder="Mot de passe"/>
+  <div class="center">
+    <button *ngIf="!this.attaqueLancee" (click)="attaquer()">Lancer l'attaque</button>
+    <button *ngIf="this.attaqueLancee" class="disabled" disabled (click)="attaquer()">Lancer l'attaque</button>
   </div>
-  <div class="colonne">
-    <button class="bouton-suite" (click)="ajouterMdp(nouveauMdp)">Ajouter</button>
-  </div>
-  <button *ngIf='!this.listeEnvoyee'class="bouton-suite" (click)="envoyerListeMdp()">Envoyer</button>
-  <button *ngIf='this.listeEnvoyee' disabled class="bouton-suite" >Envoyer</button>
-  <button *ngIf='this.listeEnvoyee' (click)="attaquer()">!! Attaquer !!</button>
-  <interaction-console class='cachee' [ngClass]="{'visible' : this.attaqueLancee }" ></interaction-console>
+</div>
+
+<div class="colonne">
+  <br/>
+  <console-noob class='cachee' [ngClass]="{'visible' : this.attaqueLancee || this.retryAttaque}" [messageConsoleNoob]="this.messageNoob"></console-noob>
+</div>
+
+<div class="colonne">
+  <br/>
+  <interaction-console class='cachee' [ngClass]="{'visible' : this.attaqueLancee || this.retryAttaque }" ></interaction-console>
+</div>
+
+<div class="center" *ngIf="this.attaqueLancee && this.attaqueFailed && !this.endTentatives && !this.attaqueSucces">
+  Les mots de passe que vous avez entré n'ont pas fonctionné, il vous reste {{this.nbTentatives}} tentative(s) !
+  <button (click)="reessayer()">Réessayer</button>
+</div>
+
+<div class="center" *ngIf="this.attaqueLancee && this.attaqueFailed && this.endTentatives && !this.attaqueSucces">
+  Alors que vous commencez à désespérer de trouver le bon mot de passe, vous vous souvenez que "password" est un mot
+  de passe très souvent utilisé par défaut par les professeurs... Vous finissez donc par réussir à entrer dans l'ordinateur
+  de M.Tetenlair, qui n'a pas pensé à le modifier !
 </div>

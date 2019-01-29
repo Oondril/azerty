@@ -1,7 +1,7 @@
 @import '~sass/variables';
 
 .bouton-suppression{
-  color: $couleur4;
+  color: $couleur3;
   font-weight: bold;
 }
 
@@ -11,14 +11,16 @@
 }
 
 .fichier{
-  min-height: 30px;
-  border: solid 1px $couleur4;
+  border-radius: 5px;
+  height: 146px;
+  border: solid 1px $couleur2;
   padding: 2px 10px;
   margin-left: 10px;
   margin-top: 10px;
 }
 
 .input-mdp{
+  border-radius: 5px;
   width: initial;
   margin-right: 0;
 }
@@ -28,9 +30,18 @@
 }
 
 .cachee{
-  visibility: hidden;
+  display: none;
 }
 
 .visible{
-  visibility: visible;
+  display: block;
+}
+
+.disabled{
+  color: gray;
+  cursor: default;
+}
+
+.disabled:hover{
+  cursor: default;
 }
